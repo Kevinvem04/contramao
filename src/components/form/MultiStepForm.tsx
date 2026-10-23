@@ -27,6 +27,25 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
   const currentQuestion: FormQuestion | undefined = questions[currentStep];
   const progressPercent = Math.round(((currentStep + 1) / totalSteps) * 100);
 
+  // Gera link dinâmico para o WhatsApp com mensagem personalizada
+  const getWhatsAppUrl = () => {
+    if (successScreen.whatsappDirectUrl) return successScreen.whatsappDirectUrl;
+
+    const phone = (FORM_CONFIG.whatsappNumber || '').replace(/\D/g, '');
+    if (!phone) return null;
+
+    const leadFirstName = formData.nome ? formData.nome.trim().split(' ')[0] : '';
+    const baseMessage = FORM_CONFIG.whatsappMessage || 'Olá! Acabei de preencher a aplicação no site e gostaria de acelerar meu atendimento.';
+
+    const messageText = leadFirstName
+      ? `Olá! Me chamo ${leadFirstName}. ${baseMessage}`
+      : baseMessage;
+
+    return `https://wa.me/${phone}?text=${encodeURIComponent(messageText)}`;
+  };
+
+  const whatsappUrl = getWhatsAppUrl();
+
   // Auto-focus no campo quando o passo muda
   useEffect(() => {
     if (isOpen && !isSubmitted && inputRef.current) {
@@ -59,15 +78,13 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
         return;
       }
 
-      // Enter para avançar (exceto em textarea que aceita Shift+Enter)
+      // Enter para avançar (exceto em textarea com Shift+Enter que quebra linha)
       if (e.key === 'Enter' && !isSubmitted) {
         if (currentQuestion?.type === 'textarea' && e.shiftKey) {
           return; // Permite quebra de linha com Shift+Enter
         }
-        if (currentQuestion?.type !== 'single-choice') {
-          e.preventDefault();
-          handleNext();
-        }
+        e.preventDefault();
+        handleNext();
       }
     };
 
@@ -283,21 +300,39 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
             </h2>
 
             {/* Mensagem e Submensagem */}
-            <p className="text-slate-200 text-base sm:text-lg leading-relaxed max-w-lg mb-3">
+            <p className="text-slate-200 text-base sm:text-lg leading-relaxed max-w-lg mb-2">
               {successScreen.message}
             </p>
             <p className="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-md mb-8">
               {successScreen.submessage}
             </p>
 
-            {/* Botão de Fechar / Concluir */}
-            <button
-              onClick={onClose}
-              className="inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl bg-gradient-to-r from-[#9333ea] via-[#a855f7] to-[#7c3aed] text-white font-bold text-base shadow-xl shadow-purple-950/50 hover:shadow-2xl hover:shadow-purple-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer border border-purple-400/30"
-            >
-              <span>{successScreen.ctaText}</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
+            {/* Ações da Tela de Sucesso */}
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-md justify-center">
+              {/* Botão de Destaque: WhatsApp */}
+              {whatsappUrl && (
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full sm:w-auto flex-1 inline-flex items-center justify-center gap-2.5 px-6 py-4 rounded-2xl bg-gradient-to-r from-emerald-500 via-green-500 to-emerald-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold text-sm sm:text-base shadow-xl shadow-emerald-950/50 hover:shadow-2xl hover:shadow-emerald-500/30 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer border border-emerald-400/40"
+                >
+                  {/* Ícone oficial SVG do WhatsApp */}
+                  <svg className="w-5 h-5 fill-current shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2ZM12.05 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.8 7.37 7.5 3.67 12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.05 20.15ZM16.57 14.33C16.32 14.21 15.11 13.61 14.88 13.53C14.66 13.45 14.5 13.41 14.33 13.65C14.17 13.9 13.69 14.47 13.54 14.64C13.4 14.81 13.25 14.83 13 14.71C12.75 14.58 11.71 14.24 10.47 13.14C9.51 12.28 8.86 11.23 8.67 10.91C8.49 10.59 8.65 10.41 8.78 10.28C8.89 10.17 9.03 9.99 9.15 9.84C9.28 9.7 9.32 9.59 9.4 9.43C9.48 9.26 9.44 9.12 9.38 9C9.32 8.88 8.83 7.67 8.62 7.18C8.42 6.7 8.22 6.77 8.07 6.76C7.93 6.76 7.76 6.75 7.6 6.75C7.43 6.75 7.16 6.81 6.94 7.06C6.71 7.3 6.08 7.9 6.08 9.11C6.08 10.33 6.97 11.5 7.09 11.67C7.22 11.83 8.84 14.33 11.31 15.4C11.9 15.65 12.35 15.8 12.71 15.92C13.3 16.1 13.84 16.08 14.26 16.01C14.73 15.94 15.71 15.42 15.91 14.85C16.12 14.28 16.12 13.79 16.06 13.69C16 13.58 15.82 13.46 16.57 14.33Z" />
+                  </svg>
+                  <span>{successScreen.whatsappButtonText || 'Acelerar Atendimento no WhatsApp'}</span>
+                </a>
+              )}
+
+              {/* Botão Secundário: Voltar ao site */}
+              <button
+                onClick={onClose}
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-purple-950/40 hover:bg-purple-900/50 text-slate-300 hover:text-white font-semibold text-sm sm:text-base border border-purple-800/40 hover:border-purple-600/50 transition-all cursor-pointer"
+              >
+                <span>{successScreen.ctaText}</span>
+              </button>
+            </div>
           </div>
         ) : (
           /* ============================================================== */
@@ -371,7 +406,7 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
                       return (
                         <div
                           key={option.value}
-                          onClick={() => handleOptionSelect(option.value, currentQuestion.autoAdvanceOnSelect)}
+                          onClick={() => handleOptionSelect(option.value, currentQuestion.autoAdvanceOnSelect === true)}
                           className={`group relative flex items-center justify-between p-4 sm:p-4.5 rounded-2xl border transition-all duration-200 cursor-pointer ${
                             isSelected
                               ? 'bg-purple-950/60 border-purple-400 shadow-[0_0_25px_rgba(168,85,247,0.3)]'
