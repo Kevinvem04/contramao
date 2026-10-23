@@ -33,8 +33,8 @@ export interface FormConfig {
 }
 
 export const FORM_CONFIG: FormConfig = {
-  // Caso deseje integrar com webhook externo (n8n, Make, Supabase, CRM), coloque a URL aqui
-  webhookUrl: "",
+  // Integração direta com Google Sheets (Google Apps Script Web App)
+  webhookUrl: "https://script.google.com/macros/s/AKfycbx9I9n4GFBuljmD9YB2_9zRh-lRpBNl6aOJxr7xFBgOjnWOGlDoq785z5tE2wpKZ3Ju3Q/exec",
 
   successScreen: {
     badge: "Aplicação Enviada",
