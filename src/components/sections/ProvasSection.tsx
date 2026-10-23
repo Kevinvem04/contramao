@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { siteContent } from '../../config/siteContent';
-import { ChevronLeft, ChevronRight, X, ZoomIn, ShieldCheck, Sparkles } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, ZoomIn, ShieldCheck } from 'lucide-react';
 
 export const ProvasSection: React.FC = () => {
   const { provas } = siteContent;
@@ -84,7 +84,7 @@ export const ProvasSection: React.FC = () => {
   };
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden select-none">
+    <section className="relative py-14 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden select-none">
       {/* Luzes dinâmicas de fundo em degradê */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-tr from-purple-600/15 via-fuchsia-600/10 to-transparent rounded-full blur-[160px] pointer-events-none" />
       <div className="absolute -bottom-10 right-10 w-[400px] h-[300px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
@@ -100,7 +100,7 @@ export const ProvasSection: React.FC = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[440px] md:w-[520px] lg:w-[560px] aspect-square pointer-events-none z-0 flex items-center justify-center">
               <img
                 src={provas.globeImage}
-                alt="Globo Tokfly"
+                alt="Globo Contram�o"
                 className="w-full h-full object-contain opacity-15 sm:opacity-20 mix-blend-screen filter drop-shadow-[0_0_30px_rgba(168,85,247,0.25)] [mask-image:radial-gradient(circle_at_center,black_25%,transparent_65%)] [-webkit-mask-image:radial-gradient(circle_at_center,black_25%,transparent_65%)]"
               />
             </div>
@@ -108,7 +108,6 @@ export const ProvasSection: React.FC = () => {
 
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0a0414]/90 border border-purple-500/30 text-purple-300 text-xs font-semibold tracking-wider uppercase mb-5 shadow-[0_0_20px_rgba(168,85,247,0.2)] backdrop-blur-md">
-              <Sparkles className="w-3.5 h-3.5 text-purple-400 animate-pulse" />
               Resultados Comprovados
             </div>
 

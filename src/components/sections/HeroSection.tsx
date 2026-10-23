@@ -1,13 +1,13 @@
 import React from 'react';
 import { siteContent } from '../../config/siteContent';
 import { CtaButton } from '../common/CtaButton';
-import { ShieldCheck, TrendingUp, Sparkles, Flame, Eye } from 'lucide-react';
+import { ShieldCheck, TrendingUp, Zap, Flame, Eye } from 'lucide-react';
 
 export const HeroSection: React.FC = () => {
   const { hero } = siteContent;
 
   return (
-    <section className="relative min-h-[92vh] flex items-center overflow-hidden pt-6 pb-12 sm:pt-8 sm:pb-16 md:py-24 px-4 sm:px-6 lg:px-12 bg-[#020205]">
+    <section className="relative min-h-[92vh] flex items-center overflow-hidden pt-6 pb-8 sm:pt-8 sm:pb-10 md:py-16 px-4 sm:px-6 lg:px-12 bg-[#020205]">
 
       {/* 
         BACKGROUND GRAPHIC RESPONSIVO:
@@ -18,14 +18,14 @@ export const HeroSection: React.FC = () => {
         {/* Imagem Desktop */}
         <img
           src={hero.backgroundImage}
-          alt="Tokfly Hero Background"
+          alt="Contram�o Hero Background"
           className="hidden sm:block w-full h-full object-cover object-right opacity-95 transition-all duration-500"
         />
 
         {/* Imagem Mobile dedicada com enquadramento perfeito do rosto no topo */}
         <img
           src={hero.backgroundImageMobile || hero.backgroundImage}
-          alt="Guilherme Panicali Tokfly"
+          alt="Guilherme Panicali - Contram�o"
           className="block sm:hidden w-full h-auto max-h-[580px] object-cover object-top opacity-95"
         />
 
@@ -104,7 +104,7 @@ export const HeroSection: React.FC = () => {
             <span className="text-xs sm:text-sm font-semibold">{hero.highlights?.[1]?.text ?? "Leilão Virgem & Sem Saturação"}</span>
           </div>
           <div className="flex items-center gap-3 text-slate-200 bg-[#0a0414]/80 backdrop-blur-md p-3 sm:p-3.5 rounded-xl border border-violet-500/30 shadow-sm">
-            <Sparkles className="w-5 h-5 text-violet-400 shrink-0" />
+            <Zap className="w-5 h-5 text-violet-400 shrink-0" />
             <span className="text-xs sm:text-sm font-semibold">{hero.highlights?.[2]?.text ?? "Melhor plataforma atualmente do mercado!"}</span>
           </div>
         </div>

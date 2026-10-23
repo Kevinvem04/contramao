@@ -3,7 +3,7 @@ const CTA_URL = "#aplicar";
 
 export const siteContent = {
   meta: {
-    title: "Tokfly | Escala e Aquisição no TikTok Ads",
+    title: "Contramão | Escala e Aquisição no TikTok Ads",
     lang: "pt-BR",
     favicon: "/images/tokfly-mark.svg",
   },
@@ -103,7 +103,7 @@ export const siteContent = {
     heading: {
       prefix: "Veja os ",
       highlight: "resultados",
-      suffix: " de quem já surfou a nova onda do TikTok Ads com a Tokfly",
+      suffix: " de quem está surfando a onda do TikTok",
     },
     globeImage: "/images/globe-neon.png",
     images: [
@@ -137,7 +137,7 @@ export const siteContent = {
     closingText: [
       "O mais importante que você precisa saber é que nosso intuito aqui é instalar no seu negócio exatamente a estrutura de campanhas, esteira de criativos e estratégias de escala que funcionam hoje no nosso campo de batalha, afinal o mercado digital se atualiza muito rápido!",
       "Para finalizar, gostaria de deixar uma única pergunta:",
-      "O que você acredita que aconteceria com o seu lucro líquido nos próximos 30 dias ao ter sua operação instruída e acompanhada de perto pelo time de especialistas da Tokfly?",
+      "O que você acredita que aconteceria com o seu lucro líquido nos próximos 30 dias ao ter sua operação instruída e acompanhada de perto pelo nosso time de especialistas?",
     ],
     cta: {
       text: "Quero Agendar",

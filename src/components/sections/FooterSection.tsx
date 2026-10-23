@@ -31,7 +31,7 @@ export const FooterSection: React.FC = () => {
         <div className="flex flex-col sm:flex-row items-center justify-between w-full pt-8 border-t border-purple-950/40 text-xs text-slate-500 gap-4">
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-purple-400" />
-            <span>Todos os direitos reservados © {new Date().getFullYear()} Tokfly • Aceleração em TikTok Ads</span>
+            <span>Todos os direitos reservados © {new Date().getFullYear()} Contramão • Aceleração em TikTok Ads</span>
           </div>
 
           <button

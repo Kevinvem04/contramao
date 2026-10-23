@@ -20,7 +20,7 @@ export const PorQueEuropaSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden">
+    <section className="relative py-14 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden">
       {/* Ambient background glows */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-purple-600/15 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-fuchsia-600/10 rounded-full blur-[150px] pointer-events-none" />

@@ -1,13 +1,13 @@
 import React from 'react';
 import { siteContent } from '../../config/siteContent';
 import { CtaButton } from '../common/CtaButton';
-import { Sparkles, Compass, Award } from 'lucide-react';
+import { Compass, Award } from 'lucide-react';
 
 export const MentorSection: React.FC = () => {
   const { mentor } = siteContent;
 
   return (
-    <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden border-t border-purple-950/40">
+    <section className="relative py-12 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden border-t border-purple-950/40">
       {/* Background Graphic com cyber tint suave */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none bg-cover bg-center mix-blend-screen filter hue-rotate-180"
@@ -107,7 +107,7 @@ export const MentorSection: React.FC = () => {
                     className="relative rounded-2xl p-5 sm:p-6 bg-gradient-to-r from-purple-950/40 via-[#0a0414]/90 to-fuchsia-950/40 border border-purple-500/40 shadow-[0_0_25px_rgba(168,85,247,0.15)] backdrop-blur-md"
                   >
                     <div className="flex items-start gap-3">
-                      <Sparkles className="w-5 h-5 text-purple-400 shrink-0 mt-0.5" />
+                      
                       <p className="text-purple-100 font-medium text-sm sm:text-base leading-relaxed">
                         {paragraph}
                       </p>

@@ -20,7 +20,7 @@ export const ParaQuemSection: React.FC = () => {
   ];
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden">
+    <section className="relative py-14 px-4 sm:px-6 lg:px-8 bg-[#020205] overflow-hidden">
       {/* Background Graphic overlay with cyber tint */}
       <div
         className="absolute inset-0 pointer-events-none opacity-10 bg-cover bg-center mix-blend-screen filter hue-rotate-180"
