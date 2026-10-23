@@ -3,22 +3,37 @@ import { ArrowRight, Globe } from 'lucide-react';
 
 interface CtaButtonProps {
   text: string;
-  href: string;
+  href?: string;
+  onClick?: (e: React.MouseEvent) => void;
   className?: string;
   size?: 'md' | 'lg';
 }
 
 export const CtaButton: React.FC<CtaButtonProps> = ({
   text,
-  href,
+  href = '#aplicar',
+  onClick,
   className = '',
   size = 'lg',
 }) => {
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) {
+      e.preventDefault();
+      onClick(e);
+    } else if (href && (href.startsWith('#') || href === '')) {
+      e.preventDefault();
+      window.dispatchEvent(new CustomEvent('open-qualification-form'));
+    }
+  };
+
+  const isExternal = Boolean(href && !href.startsWith('#') && href !== '');
+
   return (
     <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={href || '#aplicar'}
+      onClick={handleClick}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
       className={`inline-flex items-center justify-center gap-3 font-black uppercase tracking-wider rounded-2xl transition-all duration-300 transform hover:scale-[1.03] active:scale-[0.98] cursor-pointer ${
         size === 'lg'
           ? 'px-9 py-5 text-lg md:text-xl min-w-[280px] sm:min-w-[340px]'
