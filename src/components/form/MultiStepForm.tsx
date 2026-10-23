@@ -175,13 +175,21 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
         console.warn('Could not save to localStorage', err);
       }
 
-      // Dispara webhook externo caso configurado em formQuestions.ts
+      // Dispara webhook ou Google Apps Script caso configurado em formQuestions.ts
       if (webhookUrl && webhookUrl.trim() !== '') {
-        await fetch(webhookUrl, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        });
+        try {
+          await fetch(webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors', // Essencial para Google Apps Script Web App (evita bloqueio de CORS do navegador)
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({
+              ...formData,
+              submittedAt: new Date().toLocaleString('pt-BR'),
+            }),
+          });
+        } catch (postErr) {
+          console.warn('Webhook / Google Sheets dispatch notice:', postErr);
+        }
       }
 
       onSubmitSuccess?.(formData);
