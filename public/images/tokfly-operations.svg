@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 700" fill="none">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1120" />
+      <stop offset="100%" stop-color="#05070e" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#111827" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="cyanPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00F2FE" />
+      <stop offset="50%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#A855F7" />
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Frame -->
+  <rect width="600" height="700" rx="32" fill="url(#bgGrad)" stroke="#6366F1" stroke-width="2" stroke-opacity="0.3" />
+
+  <!-- Ambient Glows -->
+  <circle cx="150" cy="180" r="140" fill="#00F2FE" opacity="0.12" filter="url(#neonGlow)" />
+  <circle cx="450" cy="500" r="160" fill="#A855F7" opacity="0.12" filter="url(#neonGlow)" />
+
+  <!-- TikTok Ads Dashboard Header -->
+  <g transform="translate(40, 45)">
+    <rect width="520" height="70" rx="16" fill="url(#cardGrad)" stroke="#00F2FE" stroke-width="1.5" stroke-opacity="0.4" />
+    <!-- TikTok Icon -->
+    <rect x="20" y="16" width="38" height="38" rx="10" fill="#000" stroke="#00F2FE" stroke-width="1.5" />
+    <path d="M42 27 C44 30 47 31 50 31 L50 35 C47 35 44 34 42 32 L42 41 C42 45 38 48 34 48 C30 48 26 45 26 41 C26 37 30 34 34 34 C35 34 36 34.2 37 34.5 L37 38.5 C36 38.2 35 38 34 38 C32.5 38 31 39.2 31 41 C31 42.8 32.5 44 34 44 C35.5 44 37 42.8 37 41 L37 25 L42 25 Z" fill="#25F4EE" />
+    <text x="72" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">TOKFLY COMMAND CENTER</text>
+    <text x="72" y="52" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#25F4EE">● Live TikTok Ads Operation (Brasil)</text>
+    <rect x="420" y="24" width="80" height="24" rx="12" fill="#25F4EE" fill-opacity="0.15" stroke="#25F4EE" stroke-width="1" />
+    <text x="460" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#25F4EE" text-anchor="middle">ACTIVE</text>
+  </g>
+
+  <!-- Big Stat 1: Faturamento -->
+  <g transform="translate(40, 135)">
+    <rect width="250" height="150" rx="20" fill="url(#cardGrad)" stroke="#38BDF8" stroke-width="1" stroke-opacity="0.3" />
+    <text x="24" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#94A3B8" letter-spacing="1">RECEITA GERADA (30D)</text>
+    <text x="24" y="82" font-family="'Montserrat', sans-serif" font-size="30" font-weight="900" fill="#FFFFFF">R$ 4.829.410</text>
+    <rect x="24" y="105" width="110" height="26" rx="13" fill="#10B981" fill-opacity="0.15" stroke="#10B981" stroke-width="1" />
+    <text x="79" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#34D399" text-anchor="middle">▲ +342.8% ROI</text>
+  </g>
+
+  <!-- Big Stat 2: CPM Médio -->
+  <g transform="translate(310, 135)">
+    <rect width="250" height="150" rx="20" fill="url(#cardGrad)" stroke="#A855F7" stroke-width="1" stroke-opacity="0.3" />
+    <text x="24" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="700" fill="#94A3B8" letter-spacing="1">CPM MÉDIO TIKTOK</text>
+    <text x="24" y="82" font-family="'Montserrat', sans-serif" font-size="30" font-weight="900" fill="#00F2FE">R$ 5,84</text>
+    <rect x="24" y="105" width="130" height="26" rx="13" fill="#00F2FE" fill-opacity="0.15" stroke="#00F2FE" stroke-width="1" />
+    <text x="89" y="122" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="800" fill="#00F2FE" text-anchor="middle">▼ 68% vs Meta Ads</text>
+  </g>
+
+  <!-- Performance Chart Card -->
+  <g transform="translate(40, 305)">
+    <rect width="520" height="240" rx="24" fill="url(#cardGrad)" stroke="#6366F1" stroke-width="1.5" stroke-opacity="0.4" />
+    <text x="28" y="36" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#FFFFFF">CURVA DE ESCALA E CONVERSÃO</text>
+    <text x="28" y="54" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="600" fill="#94A3B8">Vendas Diárias Automatizadas por Impulso</text>
+
+    <!-- Chart Grid Lines -->
+    <line x1="28" y1="190" x2="492" y2="190" stroke="#334155" stroke-width="1" stroke-dasharray="4" />
+    <line x1="28" y1="140" x2="492" y2="140" stroke="#334155" stroke-width="1" stroke-dasharray="4" />
+    <line x1="28" y1="90" x2="492" y2="90" stroke="#334155" stroke-width="1" stroke-dasharray="4" />
+
+    <!-- Wave / Growth line with Cyan Glow -->
+    <path d="M 35 185 Q 110 175, 170 140 T 310 100 T 420 65 T 485 50" fill="none" stroke="#00F2FE" stroke-width="4" filter="url(#neonGlow)" />
+    <path d="M 35 185 Q 110 175, 170 140 T 310 100 T 420 65 T 485 50 L 485 200 L 35 200 Z" fill="url(#cyanPurple)" opacity="0.12" />
+
+    <!-- Points -->
+    <circle cx="170" cy="140" r="5" fill="#00F2FE" />
+    <circle cx="310" cy="100" r="6" fill="#818CF8" />
+    <circle cx="485" cy="50" r="7" fill="#A855F7" />
+
+    <text x="440" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#C084FC">PICO DE ESCALA</text>
+  </g>
+
+  <!-- Bottom Badge: Tokfly Methodology -->
+  <g transform="translate(40, 565)">
+    <rect width="520" height="95" rx="20" fill="url(#cardGrad)" stroke="#00F2FE" stroke-width="1" stroke-opacity="0.3" />
+    <circle cx="48" cy="48" r="24" fill="#00F2FE" fill-opacity="0.15" stroke="#00F2FE" stroke-width="1.5" />
+    <!-- Lightning bolt -->
+    <path d="M48 34 L42 48 L48 48 L46 62 L56 46 L49 46 Z" fill="#00F2FE" />
+    
+    <text x="88" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">MÉTODO PROPRIETÁRIO TOKFLY</text>
+    <text x="88" y="60" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="600" fill="#94A3B8">Contas de Agência Autorizadas • Contingência Blindada • UGC de Alta Conversão</text>
+  </g>
+</svg>
