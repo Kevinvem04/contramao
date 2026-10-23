@@ -7,9 +7,15 @@ import { MentorSection } from './components/sections/MentorSection';
 import { LifestyleSection } from './components/sections/LifestyleSection';
 import { FooterSection } from './components/sections/FooterSection';
 import { MultiStepForm } from './components/form/MultiStepForm';
+import { captureUtmParams } from './lib/fbPixel';
 
 export const App: React.FC = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  // 🔥 Captura UTMs da URL na chegada (fbclid, utm_source, utm_campaign, etc.)
+  useEffect(() => {
+    captureUtmParams();
+  }, []);
 
   useEffect(() => {
     // Escuta evento customizado de qualquer botão de CTA

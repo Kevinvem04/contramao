@@ -84,6 +84,7 @@ export const HeroSection: React.FC = () => {
           <CtaButton
             text={hero.cta.text}
             href={hero.cta.href}
+            trackingId="hero_cta"
             size="lg"
             className="w-full sm:w-auto justify-center"
           />

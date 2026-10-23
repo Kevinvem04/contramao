@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Globe } from 'lucide-react';
+import { trackCtaClick, trackCtaClickTotal } from '../../lib/fbPixel';
 
 interface CtaButtonProps {
   text: string;
@@ -7,6 +8,8 @@ interface CtaButtonProps {
   onClick?: (e: React.MouseEvent) => void;
   className?: string;
   size?: 'md' | 'lg';
+  /** Identificador da seção para rastreamento no Meta Pixel (ex: "hero_cta", "mentor_cta") */
+  trackingId?: string;
 }
 
 export const CtaButton: React.FC<CtaButtonProps> = ({
@@ -15,8 +18,13 @@ export const CtaButton: React.FC<CtaButtonProps> = ({
   onClick,
   className = '',
   size = 'lg',
+  trackingId = 'cta_geral',
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // 🔥 Meta Pixel — dispara rastreamento de clique em CTA
+    trackCtaClick(trackingId);      // ViewContent deduplicado por seção
+    trackCtaClickTotal(trackingId); // Evento customizado: cada clique conta
+
     if (onClick) {
       e.preventDefault();
       onClick(e);
@@ -48,3 +56,4 @@ export const CtaButton: React.FC<CtaButtonProps> = ({
     </a>
   );
 };
+

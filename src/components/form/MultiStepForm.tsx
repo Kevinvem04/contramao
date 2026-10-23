@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FORM_CONFIG, type FormQuestion } from '../../config/formQuestions';
 import { ArrowLeft, ArrowRight, Check, CheckCircle2, ChevronRight, Sparkles, X, AlertCircle } from 'lucide-react';
+import { trackLead } from '../../lib/fbPixel';
 
 interface MultiStepFormProps {
   isOpen: boolean;
@@ -194,6 +195,9 @@ export const MultiStepForm: React.FC<MultiStepFormProps> = ({
 
       onSubmitSuccess?.(formData);
       setIsSubmitted(true);
+
+      // 🔥 Meta Pixel — dispara evento Lead para otimização de campanhas e CPL
+      trackLead(formData);
     } catch (err) {
       console.error('Error submitting form', err);
       // Mesmo com erro de webhook, exibe sucesso para não frustrar o lead

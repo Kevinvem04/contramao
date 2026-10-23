@@ -83,6 +83,7 @@ export const MentorSection: React.FC = () => {
                 <CtaButton
                   text={mentor.cta.text}
                   href={mentor.cta.href}
+                  trackingId="mentor_cta_desktop"
                   size="lg"
                   className="w-full justify-center"
                 />
@@ -132,6 +133,7 @@ export const MentorSection: React.FC = () => {
               <CtaButton
                 text={mentor.cta.text}
                 href={mentor.cta.href}
+                trackingId="mentor_cta_mobile"
                 size="lg"
                 className="w-full sm:w-auto justify-center"
               />

@@ -87,6 +87,7 @@ export const PorQueEuropaSection: React.FC = () => {
           <CtaButton
             text={porQueEuropa.cta.text}
             href={porQueEuropa.cta.href}
+            trackingId="porque_europa_cta"
             size="lg"
           />
         </div>
