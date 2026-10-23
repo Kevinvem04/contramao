@@ -19,18 +19,15 @@ export interface FormQuestion {
 }
 
 export interface FormConfig {
-  webhookUrl?: string; // Endpoint para enviar os dados via POST (Google Sheets, Make, n8n)
-  whatsappNumber?: string; // Número de WhatsApp para onde o lead pode ser direcionado (ex: "5511999999999")
-  whatsappMessage?: string; // Mensagem padrão para acelerar o atendimento
+  webhookUrl?: string; // Endpoint opcional para enviar os dados via POST (ex: Make, n8n, CRM, Zapier)
   successScreen: {
     badge: string;
     title: string;
     highlight: string;
     message: string;
     submessage: string;
-    whatsappButtonText?: string;
     ctaText: string;
-    whatsappDirectUrl?: string; // Link direto alternativo se preferir
+    whatsappDirectUrl?: string;
   };
   questions: FormQuestion[];
 }
@@ -39,17 +36,12 @@ export const FORM_CONFIG: FormConfig = {
   // Integração direta com Google Sheets (Google Apps Script Web App)
   webhookUrl: "https://script.google.com/macros/s/AKfycbx9I9n4GFBuljmD9YB2_9zRh-lRpBNl6aOJxr7xFBgOjnWOGlDoq785z5tE2wpKZ3Ju3Q/exec",
 
-  // Insira seu WhatsApp aqui com código do país (55) e DDD (ex: "5511999999999")
-  whatsappNumber: "5511999999999",
-  whatsappMessage: "Olá! Acabei de preencher a aplicação no site da Contramão e gostaria de acelerar o meu atendimento.",
-
   successScreen: {
     badge: "Aplicação Enviada",
     title: "Aplicação Recebida com ",
     highlight: "Sucesso!",
-    message: "Recebemos suas informações. Nossa equipe de especialistas em TikTok Ads já está analisando sua operação.",
-    submessage: "Quer falar conosco agora mesmo e priorizar a sua análise na fila de atendimento?",
-    whatsappButtonText: "Acelerar Atendimento no WhatsApp",
+    message: "Recebemos suas informações. Nossa equipe de especialistas em TikTok Ads está analisando o momento da sua operação.",
+    submessage: "Entraremos em contato via WhatsApp nas próximas 24 horas úteis caso o seu perfil seja selecionado para a implementação.",
     ctaText: "Voltar para o site",
   },
 
